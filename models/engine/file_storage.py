@@ -34,10 +34,11 @@ class FileStorage:
         """
         Serializes __objects to the JSON file path
         """
-        file = json.dumps(self.__objects, indent=2)
-
         with open(self.__file_path, 'w') as f:
-            f.write(file)
+            dict_store = dict()
+            for k, v in self.__objects.items():
+                dict_store[k] = v.to_dict()
+            json.dump(dict_store, f, indent=2)
 
     def reload(self):
         """
