@@ -6,10 +6,12 @@ import re
 from shlex import split
 import models
 from models.base_model import BaseModel
+from models.user import User
 
 
 CLASS_LIST = [
     "BaseModel",
+    "User",
 ]
 
 
