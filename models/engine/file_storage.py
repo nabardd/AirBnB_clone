@@ -4,6 +4,7 @@ import json
 
 """Object representation for file storage"""
 
+
 class FileStorage:
 
     """
@@ -11,7 +12,7 @@ class FileStorage:
     to instances.
     """
 
-    def __init__(self, file_path="./file.json", objects = dict()):
+    def __init__(self, file_path="./file.json", objects=dict()):
         self.__file_path = file_path
         self.__objects = objects
 
@@ -19,7 +20,7 @@ class FileStorage:
         """returns the dictionary __objects"""
 
         return self.__objects
-    
+
     def new(self, obj):
         """
         sets in __objects the obj with key <obj class name>.id
@@ -37,7 +38,7 @@ class FileStorage:
 
         with open(self.__file_path, 'w') as f:
             f.write(file)
-    
+
     def reload(self):
         """
         deserializes the JSON file to __objects (only if the JSON file
