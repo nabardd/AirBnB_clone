@@ -2,7 +2,7 @@
 
 import uuid
 import os
-import datetime
+from datetime import datetime
 
 """ Base Model Class """
 
@@ -11,16 +11,27 @@ class BaseModel:
     """
     BaseModel that defines all common attributes/methods for other classes
     """
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """
-        Initializing the Base class
+        Initializing the BaseModel class
 
         Args:
 
+            *args: A list of arguments to pass to initialization
+            **kwargs: A dictionary of keyword arguments
+
         """
-        self.id = uuid.uuid4()
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if kwargs:
+            for k, v in kwargs.items():
+                if k != "__class__":
+                    if k in ('created_at', 'updated_at'):
+                        setattr(self, k, datetime.fromisoformat(v))
+                    else:
+                        setattr(self, k, v)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
@@ -34,7 +45,7 @@ class BaseModel:
         """
         updates the class attribute updated_at with the current datetime
         """
-        self.update_at = datetime.datetime.now()
+        self.update_at = datetime.now()
 
     def to_dict(self):
         """
