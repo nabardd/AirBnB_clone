@@ -104,6 +104,7 @@ class TestBaseModel(unittest.TestCase):
         """
 
         b = BaseModel()
+        sleep(0.2)
         b.save()
 
         self.assertNotEqual(b.created_at, b.updated_at)
@@ -194,7 +195,34 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(b.created_at, date)
         self.assertEqual(b.updated_at, date)
         self.assertEqual(b.name, "David")
-        
+
+    def test_to_dict_ouput(self):
+        """
+        Checks output returned by to_dict()
+        """
+
+        b = BaseModel()
+        date = datetime.now()
+        b.id = '12233'
+        b.created_at = b.updated_at = date
+        demo_output = {
+            'id': '12233',
+            'created_at': date.isoformat(),
+            'updated_at': date.isoformat(),
+            '__class__': 'BaseModel'
+        }
+
+        self.assertDictEqual(b.to_dict(), demo_output)
+
+    def test_to_dict_with_args(self):
+        """
+        Check when to_dict is passed with args
+        """
+
+        b = BaseModel()
+
+        with self.assertRaises(TypeError):
+            b.to_dict(None)
 
 
 if __name__ == "__main__":
