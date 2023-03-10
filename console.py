@@ -86,23 +86,31 @@ class HBNBCommand(cmd.Cmd):
             print(eval(args[0])().id())
             self.storage.save()
 
-    def do_show(self, argv):
-        """
-        Prints the string representation of an instance based on the
-        class name and id
-        """
-
+    def do_show(self, argv, id):
+        """Updates an instance based on the class name and id by adding or
+        updating attribute and save it to the JSON file."""
         args = check_args(argv)
-
         if args:
-            if len(args) != 2:
-                print("** no instance found **")
+            if len(args) == 1:
+                print("** instance id missing **")
             else:
-                key = f"{args[0]}.{args[1]}"
-                if key not in self.storage.all().keys():
-                    print("** instance id missing **")
+                instance_id = "{}.{}".format(args[0], args[1])
+                if instance_id in self.storage.all():
+                    if len(args) == 2:
+                        print("** attribute name missing **")
+                    elif len(args) == 3:
+                        print("** value missing **")
+                    else:
+                        obj = self.storage.all()[instance_id]
+                        if args[2] in type(obj).__dict__:
+                            v_type = type(obj.__class__.__dict__[args[2]])
+                            setattr(obj, args[2], v_type(args[3]))
+                        else:
+                            setattr(obj, args[2], args[3])
                 else:
-                    print(self.storage.all()[key])
+                    print("** no instance found **")
+
+            self.storage.save()
 
     def do_destroy(self, argv):
         """
@@ -111,16 +119,17 @@ class HBNBCommand(cmd.Cmd):
         """
 
         args = check_args(argv)
-
-        if len(args) != 2:
-            print("** no instance found **")
-        else:
-            key = f"{args[0]}.{args[1]}"
-            if key not in self.storage.all():
-                print("** instance id missing **")
+        
+        if args:
+            if len(args) != 2:
+                print("** no instance found **")
             else:
-                del self.storage.all()[key]
-                self.storage.save()
+                key = f"{args[0]}.{args[1]}"
+                if key not in self.storage.all():
+                    print("** instance id missing **")
+                else:
+                    del self.storage.all()[key]
+                    self.storage.save()
 
     def do_all(self, argv):
         """
@@ -139,6 +148,48 @@ class HBNBCommand(cmd.Cmd):
                 result_list.append(str_rep)
 
         return (result_list)
+
+    def do_count(self, argv):
+        """
+        Retrieves the number of instances of a class
+        """
+        args = check_args(argv)
+        class_name = args[0]
+        count = 0
+
+        for obj, _ in self.storage.all().items():
+            if class_name in obj:
+                count += 1
+
+        return (count)
+
+    def do_update(self, argv):
+        """
+        Updates an instance based on the class name and id
+        """
+        args = check_args(argv)
+        
+        if args:
+            if len(args) == 1:
+                print("** instance id missing **")
+            else:
+                instance_id = "{}.{}".format(args[0], args[1])
+                if instance_id in self.storage.all():
+                    if len(args) == 2:
+                        print("** attribute name missing **")
+                    elif len(args) == 3:
+                        print("** value missing **")
+                    else:
+                        obj = self.storage.all()[instance_id]
+                        if args[2] in type(obj).__dict__:
+                            v_type = type(obj.__class__.__dict__[args[2]])
+                            setattr(obj, args[2], v_type(args[3]))
+                        else:
+                            setattr(obj, args[2], args[3])
+                else:
+                    print("** no instance found **")
+
+            self.storage.save()
 
     def do_quit(self, line):
         """Quit command to exit the program"""
