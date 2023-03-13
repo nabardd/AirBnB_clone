@@ -6,6 +6,7 @@ from models.state import State
 
 """Test for state Model"""
 
+
 class Teststate(unittest.TestCase):
 
     """
@@ -23,6 +24,7 @@ class Teststate(unittest.TestCase):
 
     def test_attrs(self):
         self.assertIs(type(self.state.name), str)
+
 
 if __name__ == "__main__":
     unittest.main()

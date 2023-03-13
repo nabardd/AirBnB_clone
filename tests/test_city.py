@@ -7,6 +7,7 @@ from models.city import City
 Test Suite for city model
 """
 
+
 class TestCity(unittest.TestCase):
 
     def setUp(self):
@@ -21,6 +22,7 @@ class TestCity(unittest.TestCase):
     def test_class_attrs(self):
         self.assertTrue(type(self.city.state_id), str)
         self.assertTrue(type(self.city.name), str)
+
 
 if __name__ == "__main__":
     unittest.main()

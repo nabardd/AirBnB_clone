@@ -4,13 +4,14 @@ from models import BaseModel
 
 """ User Representation """
 
+
 class User(BaseModel):
     """Object representation of a User"""
 
     def __init__(
             self, email="", password="",
             first_name="", last_name=""):
-        
+
         """
         Initializing User object
 

@@ -4,6 +4,7 @@ from models.base_model import BaseModel
 
 """Object representation of Amenities"""
 
+
 class Amenity(BaseModel):
     """Object representation of Amenities"""
 

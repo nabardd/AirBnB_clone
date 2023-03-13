@@ -6,6 +6,7 @@ from models.review import Review
 
 """Test for Review Model"""
 
+
 class TestReview(unittest.TestCase):
 
     """
@@ -25,6 +26,7 @@ class TestReview(unittest.TestCase):
         self.assertIs(type(self.review.place_id), str)
         self.assertIs(type(self.review.user_id), str)
         self.assertIs(type(self.review.text), str)
+
 
 if __name__ == "__main__":
     unittest.main()

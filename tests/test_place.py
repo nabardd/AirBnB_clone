@@ -7,6 +7,7 @@ from models.place import Place
 Test suit for place model
 """
 
+
 class TestPlace(unittest.TestCase):
 
     def setUp(self):
@@ -30,6 +31,7 @@ class TestPlace(unittest.TestCase):
         self.assertIs(type(self.place.latitude), float)
         self.assertIs(type(self.place.longitude), float)
         self.assertIs(type(self.place.amenity_ids), list)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,7 @@ from models.base_model import BaseModel
 
 """Class for reviews"""
 
+
 class Review(BaseModel):
     """Object representation for reviews"""
 

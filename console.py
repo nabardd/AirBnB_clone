@@ -119,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
         """
 
         args = check_args(argv)
-        
+
         if args:
             if len(args) != 2:
                 print("** no instance found **")
@@ -168,7 +168,7 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on the class name and id
         """
         args = check_args(argv)
-        
+
         if args:
             if len(args) == 1:
                 print("** instance id missing **")

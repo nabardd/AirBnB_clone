@@ -2,9 +2,9 @@
 """Test suite for Amenity class of the models.amenity module"""
 
 import unittest
-
 from models.base_model import BaseModel
 from models.amenity import Amenity
+
 
 class TestAmenity(unittest.TestCase):
     """Test cases for the Amenity class"""
@@ -21,6 +21,7 @@ class TestAmenity(unittest.TestCase):
     def test_class_attrs(self):
         self.assertIs(type(self.amenity.name), str)
         self.assertFalse(bool(getattr(self.amenity, "name")))
+
 
 if __name__ == "__main__":
     unittest.main()

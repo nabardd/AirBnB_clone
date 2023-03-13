@@ -3,6 +3,7 @@
 from models.base_model import BaseModel
 """Object Representation of a State"""
 
+
 class State(BaseModel):
     """Representation of a State"""
 
@@ -15,4 +16,3 @@ class State(BaseModel):
             name (str): name of the State
         """
         self.name = ""
-        

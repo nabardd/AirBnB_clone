@@ -6,6 +6,7 @@ from models.user import User
 
 """Test for user Model"""
 
+
 class Testuser(unittest.TestCase):
 
     """
@@ -26,6 +27,7 @@ class Testuser(unittest.TestCase):
         self.assertIs(type(self.user.last_name), str)
         self.assertIs(type(self.user.email), str)
         self.assertIs(type(self.user.password), str)
+
 
 if __name__ == "__main__":
     unittest.main()

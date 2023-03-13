@@ -4,8 +4,9 @@ from models.base_model import BaseModel
 
 """Object Representation for Places"""
 
+
 class Place(BaseModel):
-    
+
     """Class Representation for Places"""
 
     def __init__(self):

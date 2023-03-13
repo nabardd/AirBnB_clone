@@ -8,9 +8,9 @@ from time import sleep
 import os
 from datetime import datetime
 from uuid import uuid4
-
 import models
 from models.base_model import BaseModel
+
 
 class TestBaseModel(unittest.TestCase):
     """
@@ -23,17 +23,17 @@ class TestBaseModel(unittest.TestCase):
         """
         b = BaseModel()
         self.assertTrue(hasattr(b, "id"))
-    
+
     def test_str_rep(self):
         """
-        Tests if string representation for class is 
+        Tests if string representation for class is
         appropriate
         """
         b = BaseModel()
         str_rep = str(b)
         self.assertTrue(
             str_rep, f"[BaseModel] ({b.id}) {b.__dict__}")
-        
+
     def test_unique_ids(self):
         """
         Test to check if ids are unique
@@ -173,12 +173,13 @@ class TestBaseModel(unittest.TestCase):
         b = BaseModel(**k_dict)
 
         self.assertEqual(b.id, k_dict["id"])
-        self.assertEqual(b.created_at,
-                        datetime.strptime(k_dict["created_at"],
-                                        "%Y-%m-%dT%H:%M:%S.%f"))
-        self.assertEqual(b.updated_at, 
+        self.assertEqual(
+            b.created_at, datetime.strptime(k_dict["created_at"],
+            "%Y-%m-%dT%H:%M:%S.%f")
+            )
+        self.assertEqual(b.updated_at,
                         datetime.strptime(k_dict["updated_at"], "%Y-%m-%dT%H:%M:%S.%f"))
-        
+
     def test_kwargs_and_args_provided(self):
         """
         Test to check when kwargs and args
