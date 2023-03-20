@@ -23,3 +23,27 @@ button {
 button:hover {
     opacity: 90%;
 }
+
+.locations {
+    height: 100%;
+    width: 25%;
+    margin: auto 30px;
+    padding: auto;
+    border-right: 1px #DDD solid;
+}
+
+.amenities {
+    height: 100%;
+    width: 25%;
+    margin-right: auto;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: -10px;
+}
