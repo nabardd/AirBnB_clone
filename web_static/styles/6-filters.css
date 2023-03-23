@@ -8,18 +8,15 @@
 }
 
 .popover {
-    /* position: inherit; */
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin-top: 0px;
-    margin-left: -30px;
-    background-color: #FAFAFA;
-    border: 1px #DDD solid;
+    list-style: none;
+    border: 1px solid #dddddd;
     border-radius: 4px;
-    padding: 20px;
-    padding-top: 0px;
-    visibility: hidden;
+    background-color: #fafafa;
+    margin-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-left: -30px;
 }
 
 .popover li {
@@ -70,9 +67,15 @@ h4 {
 h2 {
     font-size: 16px;
 }
+.locations > ul,
+.amenities > ul {
+    display: none;
+}
 
 .locations:hover > ul,
 .amenities:hover > ul {
     cursor: pointer;
+    display: block;
     visibility: visible;
+    z-index: 999;
 }
